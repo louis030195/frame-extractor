@@ -64,7 +64,7 @@ const TOPIC = process.env.PUBSUB_TOPIC;
 const topic = pubsub.topic(TOPIC);
 
 // [START gae_flex_pubsub_index]
-app.get('/fe', (req, res) => {
+app.get('/', (req, res) => {
   res.render('index', {messages, tokens, claims});
 });
 
@@ -85,7 +85,7 @@ app.post('/', formBodyParser, async (req, res, next) => {
 // [END gae_flex_pubsub_index]
 
 // [START gae_flex_pubsub_push]
-app.post('/pubsub/fe', jsonBodyParser, async (req, res) => {
+app.post('/pubsub/push', jsonBodyParser, async (req, res) => {
   if (req.query.token !== PUBSUB_VERIFICATION_TOKEN) {
     res.status(400).send();
     return;
