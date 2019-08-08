@@ -3,7 +3,7 @@ FROM gcr.io/google-appengine/nodejs
 RUN apt-get -y update && apt-get install -y ffmpeg
 
 # # Add the application source code.
-ADD . /
+ADD . /app
 
 RUN npm install
 
@@ -11,7 +11,7 @@ RUN npm install
 #ENV NODE_ENV production
 #ENV PORT 8080
 
-WORKDIR /
+WORKDIR .
 
 # start
 CMD ["npm", "start"]

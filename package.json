@@ -1,19 +1,22 @@
 {
-  "name": "appengine-pubsub",
-  "description": "Node.js Google Cloud PubSub sample for Google App Engine",
+  "name": "frame-extractor",
+  "description": "API Google App Engine + PubSub to extract frames from video",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "license": "Apache Version 2.0",
-  "author": "Google Inc.",
+  "author": "Louis Beaumont",
   "engines": {
     "node": ">=8.0.0"
   },
+  "repository": "https://github.com/louis030195/frame-extractor",
   "scripts": {
     "start": "node app.js",
     "test": "repo-tools test app && mocha */*.test.js --timeout=30000 --exit"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "^0.28.0",
+    "@google-cloud/datastore": "^4.1.4",
+    "@google-cloud/pubsub": "^0.28.1",
+    "@google-cloud/storage": "^3.0.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "ffmpeg-extract-frames": "^2.0.2",

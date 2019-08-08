@@ -25,8 +25,8 @@ const extractFrames = require('ffmpeg-extract-frames')
 const fs = require('fs')
 const glob = require('glob')
 
-const Storage = require('@google-cloud/storage')
-const storage = Storage()
+const { Storage } = require('@google-cloud/storage')
+const storage = new Storage()
 
 const { Datastore } = require('@google-cloud/datastore')
 const datastore = new Datastore()
