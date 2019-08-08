@@ -27,8 +27,6 @@ const glob = require('glob')
 
 const Storage = require('@google-cloud/storage')
 const storage = Storage()
-const CLOUD_BUCKET = 'bucket03y'
-const bucket = storage.bucket(CLOUD_BUCKET)
 
 const { Datastore } = require('@google-cloud/datastore')
 const datastore = new Datastore()
@@ -58,9 +56,11 @@ const tokens = [];
 
 // The following environment variables are set by app.yaml when running on GAE,
 // but will need to be manually set when running locally.
-const {PUBSUB_VERIFICATION_TOKEN} = process.env;
-const TOPIC = process.env.PUBSUB_TOPIC;
+const PUBSUB_VERIFICATION_TOKEN = process.env.PUBSUB_VERIFICATION_TOKEN
+const TOPIC = process.env.PUBSUB_TOPIC
+const BUCKET_NAME = process.env.BUCKET_NAME
 
+const bucket = storage.bucket(BUCKET_NAME)
 const topic = pubsub.topic(TOPIC);
 
 // [START gae_flex_pubsub_index]
@@ -174,7 +174,7 @@ async function asyncFunction(file, cb, video) {
     console.error(err)
   }
   const keyFrame = datastore.key('Frame')
-  const publicUrl = `https://storage.googleapis.com/${CLOUD_BUCKET}/${newFileName.split('/').pop()}`
+  const publicUrl = `https://storage.googleapis.com/${BUCKET_NAME}/${newFileName.split('/').pop()}`
   bucket.file(publicUrl.split('/').pop()).makePublic((err) => { if (err) console.error(err) })
   let entity = {
     key: keyFrame,

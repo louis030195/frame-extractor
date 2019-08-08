@@ -8,4 +8,5 @@ env_variables:
   # This token is used to verify that requests originate from your
   # application. It can be any sufficiently random string.
   PUBSUB_VERIFICATION_TOKEN: ok123456
+  BUCKET_NAME: 'bucket03y'
 # [END gae_flex_pubsub_yaml]
